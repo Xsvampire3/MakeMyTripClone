@@ -139,7 +139,13 @@ function AddingFlights() {
                 <b>{ticket.duration}</b>
               </p>
               <button className="book">
-                <Link to="/checkout" className="linkButton">
+                <Link
+                  to={{
+                    pathname: "/checkout",
+                    search: `?price=${ticket.price}`
+                  }}
+                  className="linkButton"
+                >
                   BOOK NOW
                 </Link>
               </button>

@@ -124,7 +124,13 @@ function AddingHotels() {
                   <b>{hotel.guests}</b>
                 </p>
                 <button className="book">
-                  <Link to="/checkout" className="linkButton">
+                  <Link
+                    to={{
+                      pathname: "/checkout",
+                      search: `?price=${hotel.price_per_night}`
+                    }}
+                    className="linkButton"
+                  >
                     BOOK NOW
                   </Link>
                 </button>

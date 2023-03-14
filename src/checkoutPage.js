@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { createBrowserHistory } from "history";
+import { useLocation } from "react-router-dom";
+import "./styles.css";
+import PaymentForm from "./CardDetails";
 
 const CheckoutPage = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userData, setUserData] = useState({});
 
   const history = createBrowserHistory();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const price = searchParams.get("price");
 
   // Redirect to Login page if user is not logged in
   useEffect(() => {
@@ -28,13 +34,16 @@ const CheckoutPage = () => {
       <h1>Checkout</h1>
       <div className="fare-summary">
         <h2>Fare Summary</h2>
-        <p>Base Fare: 0rs</p>
-        <p>Fee and Surcharges: 0rs</p>
-        <p>Total Amount: 0rs</p>
+        <p>Base Fare: {price}</p>
+        <p>Fee and Surcharges: 0.00</p>
+        <p>Total Amount: {price}</p>
       </div>
       <div className="payment-section">
         <h2>Payment Methods</h2>
-        <button onClick={handlePayment}>Pay Now</button>
+        <PaymentForm />
+        <button onClick={handlePayment} className="button-64">
+          Pay Now
+        </button>
       </div>
     </div>
   );

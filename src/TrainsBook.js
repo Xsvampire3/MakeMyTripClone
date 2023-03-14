@@ -128,7 +128,13 @@ function AddingTrains() {
                 <b>{train.duration}</b>
               </p>
               <button className="book">
-                <Link to="/checkout" className="linkButton">
+                <Link
+                  to={{
+                    pathname: "/checkout",
+                    search: `?price=${train.price}`
+                  }}
+                  className="linkButton"
+                >
                   BOOK NOW
                 </Link>
               </button>
