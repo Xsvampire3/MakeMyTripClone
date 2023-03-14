@@ -1,0 +1,181 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  background-color: grey;
+  background-image: url("https://images.pexels.com/photos/175656/pexels-photo-175656.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-attachment: fixed;
+  background-size: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .App {
+    background-size: auto;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-left: 250px;
+  margin-right: 250px;
+  margin-bottom: 5px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 16px;
+  background-color: rgba(237, 231, 241, 0.7);
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+.c1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.c2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.c3 {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  background-color: midnightblue;
+  padding: 10px;
+}
+
+.navbarflex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  list-style-type: none;
+  padding: 6px;
+  margin: 3px;
+}
+
+.li {
+  color: white;
+}
+
+h2 {
+  color: rgb(15, 14, 14);
+}
+
+.user-profile {
+  display: flex;
+  gap: 10px;
+}
+
+.logo {
+  display: flex;
+  padding: 5px;
+  margin: 0px;
+}
+
+.mmt-logo {
+  width: 100px;
+}
+
+.login-button {
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 16px;
+  background-color: black;
+  color: white;
+}
+
+.nav-flex {
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.register {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  margin-left: 200px;
+  width: 100px;
+  padding: 7px;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.book {
+  border: 1px solid rgb(22, 177, 22);
+  background-color: rgb(22, 177, 22);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.linkButton {
+  color: white;
+}
+
+.flight-search-container {
+  display: flex;
+  width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flight-search {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 7px;
+  padding: 2px;
+  gap: 3px;
+}
+
+.flight-search2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 15px;
+  padding: 2px;
+}
+
+.flight-search-submit {
+  padding: 7px;
+  border-radius: 16px;
+  color: maroon;
+  background-color: burlywood;
+  cursor: pointer;
+}
+
+input {
+  background-color: #f5ffff;
+}
+
+.inputbar {
+  width: 110px;
+}
