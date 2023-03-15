@@ -19,30 +19,46 @@ function Register() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Register</h2>
-      <div className="register">
-        <label>
-          Username:
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <button type="submit" className="submit">
-          Register
-        </button>
-      </div>
-    </form>
+    <div className="login-page">
+      <form onSubmit={handleSubmit}>
+        <div className="login3">
+          <div className="login2">
+            <div>
+              <img
+                style={{ width: "100px", height: "100px" }}
+                src="https://cdn-icons-png.flaticon.com/128/10008/10008285.png"
+                alt="register-logo"
+              />
+            </div>
+            <div>
+              <label>
+                Username:
+                <input
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                Password:
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </label>
+            </div>
+          </div>
+          <button type="submit" className="button-64">
+            Register
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 

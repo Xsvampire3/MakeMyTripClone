@@ -24,39 +24,48 @@ function Login() {
   };
 
   return (
-    <div>
-      {isLoggedIn ? (
-        <div>Welcome back, {username}!</div>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <h2>Login</h2>
-          <div className="register">
-            <label>
-              Username:
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+    <div className="login-page">
+      <form onSubmit={handleSubmit}>
+        <div className="login3">
+          <div className="login2">
+            <div>
+              <img
+                style={{ width: "100px", height: "100px" }}
+                src="https://cdn-icons-png.flaticon.com/128/7856/7856126.png"
+                alt="login-logo"
               />
-            </label>
-            <label>
-              Password:
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </label>
-            <button type="submit" className="submit">
-              Login
-            </button>
-            <p>
-              Don't have an account yet?{" "}
-              <Link to="/register">Register now</Link>
-            </p>
+            </div>
+            <div>
+              <label>
+                Username:
+                <input
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                Password:
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </label>
+            </div>
           </div>
-        </form>
-      )}
+          <button type="submit" className="button-64">
+            Login
+          </button>
+          <p>
+            Don't have an account yet? <Link to="/register">Register now</Link>
+          </p>
+        </div>
+      </form>
     </div>
   );
 }

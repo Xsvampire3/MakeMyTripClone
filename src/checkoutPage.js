@@ -24,26 +24,20 @@ const CheckoutPage = () => {
     }
   }, []);
 
-  const handlePayment = () => {
-    // Perform payment processing here
-    alert("Payment successful!");
-  };
-
   return (
     <div className="checkout-page">
       <h1>Checkout</h1>
-      <div className="fare-summary">
-        <h2>Fare Summary</h2>
-        <p>Base Fare: {price}</p>
-        <p>Fee and Surcharges: 0.00</p>
-        <p>Total Amount: {price}</p>
-      </div>
-      <div className="payment-section">
-        <h2>Payment Methods</h2>
-        <PaymentForm />
-        <button onClick={handlePayment} className="button-64">
-          Pay Now
-        </button>
+      <div className="checkout-page2">
+        <div className="fare-summary">
+          <h2>Fare Summary</h2>
+          <p>Base Fare: {price}</p>
+          <p>Fee and Surcharges: 0.00</p>
+          <p>Total Amount: {price}</p>
+        </div>
+        <div className="payment-section">
+          <h2>Payment Methods</h2>
+          <PaymentForm />
+        </div>
       </div>
     </div>
   );
