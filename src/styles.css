@@ -131,10 +131,10 @@ a {
   }
 }
 
-.logout-button{
+.logout-button {
   border-radius: 50px;
-  border:none;
-  background-color:navy;
+  border: none;
+  background-color: navy;
   cursor: pointer;
 }
 
