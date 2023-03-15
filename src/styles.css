@@ -131,6 +131,13 @@ a {
   }
 }
 
+.logout-button{
+  border-radius: 50px;
+  border:none;
+  background-color:navy;
+  cursor: pointer;
+}
+
 .book {
   border: 1px solid rgb(22, 177, 22);
   background-color: rgb(22, 177, 22);

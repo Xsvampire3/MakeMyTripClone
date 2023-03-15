@@ -5,10 +5,24 @@ import AddingTrains from "./TrainsBook";
 import Login from "./Login";
 import Register from "./Register";
 import CheckoutPage from "./checkoutPage";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, BrowserRouter, Route, Routes } from "react-router-dom";
 
 function Navbar() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("username");
+    if (loggedInUser) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("username");
+    setIsLoggedIn(false);
+  };
+
   return (
     <nav className="navbar">
       <div className="navbarflex">
@@ -41,13 +55,23 @@ function Navbar() {
               </li>
             </ul>
             <div className="user-profile">
-              <Link to="/login">
-                <img
-                  style={{ width: "36px", height: "36px" }}
-                  src="https://cdn-icons-png.flaticon.com/128/3711/3711310.png"
-                  alt="login"
-                />
-              </Link>
+              {isLoggedIn ? (
+                <button className="logout-button" onClick={handleLogout}>
+                  <img
+                    style={{ width: "36px", height: "36px" }}
+                    src="https://cdn-icons-png.flaticon.com/128/4436/4436954.png"
+                    alt="logout"
+                  />
+                </button>
+              ) : (
+                <Link to="/login">
+                  <img
+                    style={{ width: "36px", height: "36px" }}
+                    src="https://cdn-icons-png.flaticon.com/128/3711/3711310.png"
+                    alt="login"
+                  />
+                </Link>
+              )}
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { createBrowserHistory } from "history";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./styles.css";
 import PaymentForm from "./CardDetails";
 
@@ -12,15 +12,18 @@ const CheckoutPage = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const price = searchParams.get("price");
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
 
   // Redirect to Login page if user is not logged in
   useEffect(() => {
-    const loggedInUser = localStorage.getItem("user");
+    const loggedInUser = localStorage.getItem("username");
     if (loggedInUser) {
       setLoggedIn(true);
       setUserData(JSON.parse(loggedInUser));
+      setUsername(loggedInUser);
     } else {
-      history.push("/login");
+      navigate("/login");
     }
   }, []);
 
