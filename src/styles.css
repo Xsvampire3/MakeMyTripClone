@@ -93,14 +93,6 @@ h2 {
   width: 100px;
 }
 
-.login-button {
-  padding: 5px;
-  border: 2px solid black;
-  border-radius: 16px;
-  background-color: black;
-  color: white;
-}
-
 .nav-flex {
   display: flex;
   gap: 5px;

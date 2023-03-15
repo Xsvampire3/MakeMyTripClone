@@ -41,8 +41,12 @@ function Navbar() {
               </li>
             </ul>
             <div className="user-profile">
-              <Link to="/login" className="login-button">
-                Login
+              <Link to="/login">
+                <img
+                  style={{ width: "36px", height: "36px" }}
+                  src="https://cdn-icons-png.flaticon.com/128/3711/3711310.png"
+                  alt="login"
+                />
               </Link>
             </div>
           </div>
