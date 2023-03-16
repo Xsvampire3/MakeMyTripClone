@@ -86,6 +86,7 @@ export default function App() {
       <div className="App">
         <Navbar />
         <Routes>
+          <Route path="/" element={<AddingFlights />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/flights" element={<AddingFlights />} />
