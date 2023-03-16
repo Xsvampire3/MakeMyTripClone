@@ -11,7 +11,10 @@ function AddingHotels() {
 
   const handleSearch = () => {
     setHotels(
-      hotels.filter((hotel) => hotel.city.toLowerCase() === city.toLowerCase())
+      hotels &&
+        hotels.filter(
+          (hotel) => hotel.city.toLowerCase() === city.toLowerCase()
+        )
     );
     console.log(setHotels);
   };
@@ -139,6 +142,7 @@ function AddingHotels() {
           ))}
         </div>
       </div>
+      {hotels.length < 1 ? "No Hotels Found!" : null}
     </div>
   );
 }

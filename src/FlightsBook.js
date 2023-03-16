@@ -12,11 +12,12 @@ function AddingFlights() {
 
   const handleSearch = () => {
     setTickets(
-      tickets.filter(
-        (ticket) =>
-          ticket.from.toLowerCase() === fromCity.toLowerCase() &&
-          ticket.to.toLowerCase() === toCity.toLowerCase()
-      )
+      tickets &&
+        tickets.filter(
+          (ticket) =>
+            ticket.from.toLowerCase() === fromCity.toLowerCase() &&
+            ticket.to.toLowerCase() === toCity.toLowerCase()
+        )
     );
     console.log(setTickets);
   };
@@ -153,6 +154,7 @@ function AddingFlights() {
           </div>
         ))}
       </div>
+      {tickets.length < 1 ? "No Flights Found!" : null}
     </div>
   );
 }

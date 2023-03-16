@@ -11,6 +11,7 @@ function AddingTrains() {
 
   const handleSearch = () => {
     setTrains(
+      trains &&
       trains.filter(
         (train) =>
           train.from.toLowerCase() === source.toLowerCase() &&
@@ -142,6 +143,7 @@ function AddingTrains() {
           </div>
         ))}
       </div>
+      {trains.length < 1 ? "No Trains Found!":null}
     </div>
   );
 }
