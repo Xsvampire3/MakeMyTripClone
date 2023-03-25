@@ -1,17 +1,23 @@
 import "./styles.css";
-import React, { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "./firebasecomfig";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem("username", username);
-    localStorage.setItem("password", password);
-    alert("Registration successful!");
+    const data = new FormData(e.target);
+    const userName = data.get("userName");
+    const password = data.get("password");
+
+    createUserWithEmailAndPassword(auth, userName, password).then(
+      (userDetails) => {
+        console.log(userDetails.user);
+        alert("Registration successful!");
+      }
+    );
 
     setTimeout(() => {
       navigate("/login");
@@ -32,11 +38,11 @@ function Register() {
             </div>
             <div>
               <label>
-                Username:
+                Email:
                 <input
                   type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  name="userName"
+                  placeholder="abc@gmail.com"
                   required
                 />
               </label>
@@ -46,8 +52,8 @@ function Register() {
                 Password:
                 <input
                   type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  name="password"
+                  placeholder="Enter Password"
                   required
                 />
               </label>

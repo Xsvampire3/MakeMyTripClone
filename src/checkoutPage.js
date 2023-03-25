@@ -1,30 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { createBrowserHistory } from "history";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./styles.css";
 import PaymentForm from "./CardDetails";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const CheckoutPage = () => {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState(null);
 
-  const history = createBrowserHistory();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const price = searchParams.get("price");
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
 
   // Redirect to Login page if user is not logged in
   useEffect(() => {
-    const loggedInUser = localStorage.getItem("username");
-    if (loggedInUser) {
-      setLoggedIn(true);
-      setUserData(JSON.parse(loggedInUser));
-      setUsername(loggedInUser);
-    } else {
-      navigate("/login");
-    }
+    const auth = getAuth();
+    onAuthStateChanged(auth, (userName) => {
+      if (userName) {
+        setLoggedIn(true);
+        setUserData(userName);
+      } else {
+        navigate("/login");
+      }
+    });
   }, []);
 
   return (

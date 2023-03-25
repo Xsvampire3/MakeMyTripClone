@@ -1,26 +1,26 @@
 import "./styles.css";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "./firebasecomfig";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const storedUsername = localStorage.getItem("username");
-    const storedPassword = localStorage.getItem("password");
-
-    if (username === storedUsername && password === storedPassword) {
-      setIsLoggedIn(true);
-      setUsername(username);
-      alert("Login successful!");
-      navigate("/");
-    } else {
-      alert("Invalid username or password");
-    }
+    const data = new FormData(e.target);
+    const userName = data.get("userName");
+    const password = data.get("password");
+    signInWithEmailAndPassword(auth, userName, password)
+      .then((userDetails) => {
+        setIsLoggedIn(true);
+        navigate("/");
+      })
+      .catch(() => {
+        alert("username or password is invalid");
+      });
   };
 
   return (
@@ -37,11 +37,11 @@ function Login() {
             </div>
             <div>
               <label>
-                Username:
+                Email:
                 <input
                   type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  name="userName"
+                  placeholder="abc@gmail.com"
                   required
                 />
               </label>
@@ -51,8 +51,8 @@ function Login() {
                 Password:
                 <input
                   type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  name="password"
+                  placeholder="Enter Password"
                   required
                 />
               </label>

@@ -1,27 +1,37 @@
 import "./styles.css";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    const loggedInUser = localStorage.getItem("username");
-    if (loggedInUser) {
-      setIsLoggedIn(true);
-    }
+    const auth = getAuth();
+    onAuthStateChanged(auth, (userName) => {
+      if (userName) {
+        setIsLoggedIn(true);
+      }
+    });
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("username");
-    setIsLoggedIn(false);
-  };
+  function handleLogout() {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        alert("Log out successful");
+      })
+      .catch((error) => {
+        // An error occurred
+        console.log(error);
+      });
+  }
 
   return (
     <nav className="navbar">
       <div className="navbarflex">
         <div>
-          <Link to="/flights" className="logo">
+          <Link to="/" className="logo">
             <img
               className="mmt-logo"
               src="https://imgak.mmtcdn.com/pwa_v3/pwa_hotel_assets/header/mmtLogoWhite.png"
